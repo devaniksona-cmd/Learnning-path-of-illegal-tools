@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>MITM / Network Interception — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 07</div>
+    <h1 class="page-hero__title">MITM / Network<br><span>Interception</span></h1>
+    <p class="page-hero__sub">ARP poisoning, packet sniffing, and network interception tools. <strong class="text-red">Violates wiretapping laws in every jurisdiction.</strong> Federal felony to intercept others' traffic — even on open WiFi.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">ettercap</td>
+          <td class="td-does">Sends forged ARP reply packets to both the victim and the router, poisoning their ARP caches so both devices believe your MAC address is the other party. All traffic between victim and internet now flows through your machine first. You can read all unencrypted traffic, inject custom content into HTTP pages, strip SSL/TLS with SSLstrip to downgrade HTTPS connections, and capture login credentials in plaintext.</td>
+          <td class="td-why">ARP poisoning + traffic interception on networks you don't own = wiretapping felony under ECPA.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install ettercap-graphical">sudo apt install ettercap-graphical</code></td>
+          <td><code class="chip chip--run" data-copy="sudo ettercap -T -M arp /victim// /gateway//">sudo ettercap -T -M arp /victim// /gateway//</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — MITM on others = wiretapping</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">bettercap</td>
+          <td class="td-does">Modern all-in-one network attack framework. Beyond basic ARP spoofing, it includes DNS spoofing (redirect victim's DNS queries to your machine), HTTP/S sniffing with automatic SSL certificate spoofing, JavaScript injection into HTTP responses to deliver custom payloads, BLE (Bluetooth Low Energy) scanning and impersonation, and a real-time interactive web UI for managing all active attacks simultaneously.</td>
+          <td class="td-why">Full network attack framework — ARP + DNS + SSL stripping + JS injection. Criminal on any unauthorized network.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install bettercap">sudo apt install bettercap</code></td>
+          <td><code class="chip chip--run" data-copy="sudo bettercap -iface eth0 -eval 'arp.spoof on'">sudo bettercap -iface eth0 -eval 'arp.spoof on'</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — unauthorized MITM = criminal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">arpspoof</td>
+          <td class="td-does">Sends a continuous stream of forged ARP replies to the victim machine, telling it that the attacker's MAC address is the gateway's IP. Simultaneously sends forged ARPs to the gateway claiming to be the victim. With IP forwarding enabled on the attacker's machine, all traffic between victim and internet passes through the attacker for interception, modification, or logging.</td>
+          <td class="td-why">ARP cache poisoning redirects traffic through your machine. Intercepting that traffic = federal wiretapping offense.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install dsniff">sudo apt install dsniff</code></td>
+          <td><code class="chip chip--run" data-copy="sudo arpspoof -i eth0 -t victim_ip gateway_ip">sudo arpspoof -i eth0 -t victim_ip gateway_ip</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — illegal on others' networks</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Wireshark (on others)</td>
+          <td class="td-does">Puts your network interface into promiscuous mode to capture every packet that reaches your NIC — including packets not addressed to you. On a hub or after ARP poisoning, this includes other users' traffic. Wireshark decodes hundreds of protocols in real time, showing you usernames, passwords, session cookies, emails, and file transfers from everyone on the same network segment in readable form.</td>
+          <td class="td-why">Capturing packets not addressed to you = unauthorized interception = wiretapping felony under ECPA.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install wireshark">sudo apt install wireshark</code></td>
+          <td><code class="chip chip--run" data-copy="wireshark -i eth0 -k">wireshark -i eth0 -k  # promiscuous mode</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — capturing others = felony</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">tcpdump (unauthorized)</td>
+          <td class="td-does">CLI-based packet capture tool that writes raw network packets to a .pcap file. With -i any it captures traffic on all interfaces simultaneously. Can filter by host, port, protocol, or packet content. When run in promiscuous mode on a shared network or after ARP poisoning, captures and logs all traffic passing through your interface including other users' unencrypted credentials and session tokens.</td>
+          <td class="td-why">Logging others' network traffic without authorization = electronic surveillance = criminal offense.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install tcpdump">sudo apt install tcpdump</code></td>
+          <td><code class="chip chip--run" data-copy="sudo tcpdump -i eth0 -w capture.pcap">sudo tcpdump -i eth0 -w capture.pcap</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — unauthorized sniffing = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">mitmproxy (on others)</td>
+          <td class="td-does">Runs a transparent HTTP/S proxy that intercepts and decrypts TLS traffic by presenting its own certificate to clients. When configured as a transparent proxy (combined with iptables rules to redirect traffic), all HTTP/S traffic from the victim is decrypted, logged in full with request/response bodies, and re-encrypted before forwarding. You see every API call, form submission, and cookie in plaintext.</td>
+          <td class="td-why">Decrypting and logging others' TLS-protected communications without consent = criminal wiretapping.</td>
+          <td><code class="chip chip--install" data-copy="pip3 install mitmproxy">pip3 install mitmproxy</code></td>
+          <td><code class="chip chip--run" data-copy="mitmproxy --mode transparent">mitmproxy --mode transparent</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — legal only on your own traffic</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    The <strong>Electronic Communications Privacy Act (ECPA)</strong> in the USA and equivalent laws globally make intercepting others' network traffic a <strong>federal felony</strong>. This applies even on an open, unencrypted WiFi network. "The network was open" is not a legal defence.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)"><strong class="text-green">Burp Suite</strong> is the legal way to intercept and modify HTTP traffic — but only your own browser traffic through your own proxy on your own machine.</p>
+      <code class="chip chip--install" data-copy="burpsuite" style="font-size:12px;display:block">burpsuite  # proxy your own browser only — never others' traffic</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="c2.html" class="btn btn--outline">← C2 / RANSOMWARE</a>
+    <a href="oos.html" class="btn btn--outline">OUT OF SCOPE →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

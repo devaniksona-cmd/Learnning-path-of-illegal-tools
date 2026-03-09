@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- GitHub Pages Ready: zero external deps. Push repo → Settings → Pages → Done. -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dangerous bug bounty tools you should never install or use. Install commands, run commands, what actually happens.">
+  <meta name="theme-color" content="#050810">
+  <title>FORBIDDEN TOOLS — Bug Bounty Arsenal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Homepage-only styles ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      overflow: hidden;
+    }
+
+    .hero__grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,45,78,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,45,78,.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero__glow {
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse, rgba(255,45,78,.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__glow2 {
+      position: absolute; bottom: -100px; left: 8%;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(61,139,255,.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero__title {
+      font-size: clamp(64px, 12vw, 140px);
+      text-shadow: 0 0 60px rgba(255,45,78,.4), 0 0 120px rgba(255,45,78,.15);
+      margin-bottom: 20px;
+    }
+
+    .hero__sub {
+      font-size: 16px;
+      color: var(--subtext);
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    .hero__chips {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .hero__scroll {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 9px; letter-spacing: 3px;
+      color: var(--subtext);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .hero__scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid var(--subtext);
+      border-bottom: 2px solid var(--subtext);
+      transform: rotate(45deg);
+      opacity: .4;
+    }
+
+    /* Category cards */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .cat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      padding: 20px 22px;
+      border-radius: var(--r-sm);
+      transition: border-color var(--ease), transform var(--ease), background var(--ease);
+      text-decoration: none;
+      display: block;
+    }
+
+    .cat-card:hover {
+      border-left-color: var(--orange);
+      background: var(--panel2);
+      transform: translateX(4px);
+    }
+
+    .cat-card__num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--subtext);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .cat-card__title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .cat-card__desc {
+      font-size: 12.5px;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+
+    .cat-card__count {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 1px;
+    }
+
+    /* Stats row */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      margin-bottom: var(--gap-xl);
+    }
+
+    .stat {
+      background: var(--panel);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .stat__num {
+      font-family: var(--font-display);
+      font-size: 42px;
+      color: var(--red);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(255,45,78,.3);
+    }
+
+    .stat__label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--subtext);
+      letter-spacing: 2px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__grid"></div>
+  <div class="hero__glow"></div>
+  <div class="hero__glow2"></div>
+
+  <div class="page-hero__badge">CLASSIFIED · FOR AWARENESS ONLY</div>
+
+  <h1 class="hero__title">FORBIDDEN<br><span class="text-red">TOOLS</span></h1>
+
+  <p class="hero__sub">
+    Tools you are <strong class="text-red">not supposed</strong> to install or use in bug bounty.
+    Install commands · Run commands · What actually happens.
+  </p>
+
+  <div class="hero__chips">
+    <span class="badge badge--cyan">INSTALL CMD</span>
+    <span class="badge badge--purple">RUN CMD</span>
+    <span class="badge badge--red">❌ FULLY BLOCKED</span>
+    <span class="badge badge--orange">⚠ INSTALLS BUT ILLEGAL</span>
+  </div>
+
+  <div class="hero__scroll">
+    SCROLL<div class="hero__scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="container" style="padding-top:var(--gap-xl)">
+  <div class="stats" data-reveal>
+    <div class="stat"><div class="stat__num">8</div><div class="stat__label">CATEGORIES</div></div>
+    <div class="stat"><div class="stat__num">38</div><div class="stat__label">TOOLS LISTED</div></div>
+    <div class="stat"><div class="stat__num">5</div><div class="stat__label">LAW TIERS</div></div>
+    <div class="stat"><div class="stat__num">8</div><div class="stat__label">GOLDEN RULES</div></div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div style="margin-bottom:var(--gap-md)">
+    <h2 style="font-size:26px;letter-spacing:3px;margin-bottom:6px">EXPLORE <span class="text-red">CATEGORIES</span></h2>
+    <p class="text-dim" style="font-size:13px">Click any category to see tools, install commands, run commands, and consequences.</p>
+  </div>
+
+  <div class="cat-grid">
+    <a href="dos.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">01 · CATEGORY</div>
+      <div class="cat-card__title">DoS / DDoS</div>
+      <div class="cat-card__desc">Tools that flood servers with traffic to cause denial of service. Criminal under CFAA.</div>
+      <span class="cat-card__count">6 TOOLS →</span>
+    </a>
+    <a href="phishing.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">02 · CATEGORY</div>
+      <div class="cat-card__title">PHISHING</div>
+      <div class="cat-card__desc">Social engineering & credential harvesting frameworks. Out of scope on 99% of programs.</div>
+      <span class="cat-card__count">5 TOOLS →</span>
+    </a>
+    <a href="wifi.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">03 · CATEGORY</div>
+      <div class="cat-card__title">WIFI ATTACKS</div>
+      <div class="cat-card__desc">Wireless password cracking & WPS exploitation tools. Never in web bug bounty scope.</div>
+      <span class="cat-card__count">5 TOOLS →</span>
+    </a>
+    <a href="rats.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">04 · CATEGORY</div>
+      <div class="cat-card__title">RATS / MALWARE</div>
+      <div class="cat-card__desc">Remote access trojans, spyware & malware generators. Federal crime to deploy worldwide.</div>
+      <span class="cat-card__count">6 TOOLS →</span>
+    </a>
+    <a href="stuffing.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">05 · CATEGORY</div>
+      <div class="cat-card__title">CRED STUFFING</div>
+      <div class="cat-card__desc">Account checkers and credential stuffing automation. Illegal even with public combo lists.</div>
+      <span class="cat-card__count">5 TOOLS →</span>
+    </a>
+    <a href="c2.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">06 · CATEGORY</div>
+      <div class="cat-card__title">C2 / RANSOMWARE</div>
+      <div class="cat-card__desc">Command-and-control frameworks and ransomware builders. Possession alone is criminal in most countries.</div>
+      <span class="cat-card__count">5 TOOLS →</span>
+    </a>
+    <a href="mitm.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">07 · CATEGORY</div>
+      <div class="cat-card__title">MITM / NETWORK</div>
+      <div class="cat-card__desc">Network interception and ARP poisoning tools. Violates wiretapping laws in all jurisdictions.</div>
+      <span class="cat-card__count">5 TOOLS →</span>
+    </a>
+    <a href="oos.html" class="cat-card" data-reveal>
+      <div class="cat-card__num">08 · CATEGORY</div>
+      <div class="cat-card__title">OUT OF SCOPE</div>
+      <div class="cat-card__desc">Actions that turn legitimate tools illegal — pivoting, data exfil, OOS subdomains & more.</div>
+      <span class="cat-card__count">6 SCENARIOS →</span>
+    </a>
+  </div>
+
+  <div style="margin-top:var(--gap-xl); text-align:center">
+    <a href="rules.html" class="btn btn--primary">⚖ VIEW THE 8 GOLDEN RULES</a>
+  </div>
+
+  <div style="height: var(--gap-xl)"></div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

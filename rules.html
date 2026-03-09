@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The 8 Golden Rules of legal bug bounty hunting.">
+  <meta name="theme-color" content="#050810">
+  <title>The 8 Golden Rules — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .rule-card {
+      display: flex; align-items: flex-start; gap: 18px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      padding: 22px 24px;
+      border-radius: var(--r-sm);
+      transition: border-color var(--ease), background var(--ease);
+    }
+    .rule-card:hover { border-color: var(--green); background: var(--panel2); }
+
+    .rule-num {
+      font-family: var(--font-display);
+      font-size: 48px;
+      color: var(--green);
+      opacity: .2;
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 36px;
+    }
+
+    .rule-text { font-size: 14px; color: var(--text); line-height: 1.6; padding-top: 6px; }
+    .rule-text strong { color: var(--green); }
+
+    .levels-stack {
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      overflow: hidden;
+    }
+
+    .level-row {
+      display: grid;
+      grid-template-columns: 52px 180px 1fr;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease);
+    }
+    .level-row:last-child { border-bottom: none; }
+    .level-row:hover { background: rgba(255,45,78,.03); }
+
+    .level-num {
+      font-family: var(--font-display);
+      font-size: 30px;
+      color: var(--red);
+      text-align: center;
+      padding: 16px 0;
+      border-right: 1px solid var(--border);
+      opacity: .5;
+    }
+
+    .level-who {
+      padding: 16px 18px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--yellow);
+      border-right: 1px solid var(--border);
+    }
+
+    .level-what { padding: 16px 20px; font-size: 13px; color: var(--text); }
+
+    .checklist { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--r-sm); overflow: hidden; }
+    .check-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--ease);
+    }
+    .check-row:last-child { border-bottom: none; }
+    .check-row:hover { background: rgba(0,255,136,.025); }
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border2);
+      border-radius: 3px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all var(--ease);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-box.checked { background: var(--green); border-color: var(--green); }
+    .check-box.checked::after { content: '✓'; color: #000; font-size: 11px; font-weight: bold; }
+    .check-label { font-size: 13px; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div>
+  <div class="page-hero__glow" style="background: radial-gradient(ellipse, rgba(0,255,136,.1) 0%, transparent 65%)"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge" style="background:rgba(0,255,136,.1);border-color:rgba(0,255,136,.3);color:var(--green)">⚖ LEGAL GUIDE</div>
+    <h1 class="page-hero__title" style="color:var(--green)">The 8 Golden<br><span style="color:#fff">Rules</span></h1>
+    <p class="page-hero__sub">The rules that keep your bug bounty hunting legal, ethical, and protected.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:var(--gap-lg)">
+
+  <!-- Rules -->
+  <div class="section section--first">
+    <div class="section__head" data-reveal>
+      <div class="section__num" style="color:var(--green)">01</div>
+      <div class="section__title" style="color:var(--green)">Golden <span style="color:#fff">Rules</span></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">1</div>
+        <div class="rule-text">Only test assets that are <strong>explicitly listed</strong> in the program's scope document.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">2</div>
+        <div class="rule-text"><strong>Never cause damage or data loss</strong> — stop the moment you confirm a vulnerability exists.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">3</div>
+        <div class="rule-text"><strong>Never access, read, copy, or store real user data</strong> under any circumstance.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">4</div>
+        <div class="rule-text"><strong>Never use DoS / DDoS tools</strong> — ever, under any circumstance, on any target.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">5</div>
+        <div class="rule-text">Always <strong>read the program's full rules and scope</strong> in detail before touching anything.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">6</div>
+        <div class="rule-text">Never test without a <strong>written scope document</strong> — it is your only legal protection.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">7</div>
+        <div class="rule-text">Always <strong>report what you find</strong> responsibly — never weaponize or sell vulnerabilities.</div>
+      </div>
+      <div class="rule-card" data-reveal>
+        <div class="rule-num">8</div>
+        <div class="rule-text">When in doubt → <strong>do not proceed</strong>. Ask the program team first.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blocking levels -->
+  <div class="section" data-reveal>
+    <div class="section__head">
+      <div class="section__num">02</div>
+      <div class="section__title">Why You're Blocked at <span>Every Level</span></div>
+    </div>
+    <div class="levels-stack">
+      <div class="level-row">
+        <div class="level-num">1</div>
+        <div class="level-who">GitHub / GitLab</div>
+        <div class="level-what">Repos violating ToS are permanently removed. Many tools are already gone from public registries.</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num">2</div>
+        <div class="level-who">Antivirus / EDR</div>
+        <div class="level-what">Files quarantined the moment they're downloaded. Windows Defender, CrowdStrike, SentinelOne all flag these.</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num">3</div>
+        <div class="level-who">ISPs</div>
+        <div class="level-what">Malicious traffic patterns detected and blocked before packets even reach the target server.</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num">4</div>
+        <div class="level-who">Target Platforms</div>
+        <div class="level-what">Bot detection, rate limiting, and anomaly detection ban your IP and account within seconds.</div>
+      </div>
+      <div class="level-row">
+        <div class="level-num">5</div>
+        <div class="level-who">Law Enforcement</div>
+        <div class="level-what">IP traced, ISP subpoenaed, arrest and prosecution under CFAA or equivalent laws in your country.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pre-test checklist -->
+  <div class="section" data-reveal>
+    <div class="section__head">
+      <div class="section__num">03</div>
+      <div class="section__title">Pre-Test <span>Checklist</span></div>
+    </div>
+    <p style="margin-bottom:16px;font-size:13px">Click each item to check it off before you start testing.</p>
+    <div class="checklist" id="checklist">
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Is the target explicitly listed in the program scope?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Does the program allow automated scanning?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Am I using a test account — not real user data?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Have I set rate limits on all my tools?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Am I testing on a staging/dev environment (not production)?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Do I have the program's rules open in front of me?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Do I know the out-of-scope assets and will avoid them?</div></div>
+      <div class="check-row"><div class="check-box" onclick="this.classList.toggle('checked')"></div><div class="check-label">Am I ready to stop and report immediately if I find something?</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:var(--gap-xl);text-align:center" data-reveal>
+    <div class="alert alert--danger" style="text-align:left;max-width:700px;margin:0 auto var(--gap-lg)">
+      <span class="alert__icon">⚖</span>
+      The <strong>Computer Fraud and Abuse Act (CFAA)</strong>, UK Computer Misuse Act, and equivalent laws worldwide make unauthorized computer access a criminal offense — even when a real vulnerability is discovered. Your program scope document is your only legal protection.
+    </div>
+    <a href="index.html" class="btn btn--outline">← BACK TO HOME</a>
+  </div>
+
+  <div style="height:var(--gap-xl)"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

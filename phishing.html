@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>Phishing Tools — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 02</div>
+    <h1 class="page-hero__title">Phishing &amp;<br><span>Social Engineering</span></h1>
+    <p class="page-hero__sub">Credential harvesting and phishing campaign frameworks. <strong class="text-red">Out of scope on 99% of programs.</strong> Running one without written permission = lawsuit + criminal charges.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">evilginx2</td>
+          <td class="td-does">Acts as a reverse proxy sitting between the victim and the real website. The victim sees a pixel-perfect clone of the real login page at a lookalike domain. When they log in, evilginx intercepts their session cookie in real time — bypassing 2FA entirely because it captures the post-authentication token, not just credentials.</td>
+          <td class="td-why">Steals authenticated sessions, bypasses MFA. Criminal phishing + identity theft charges.</td>
+          <td><code class="chip chip--install" data-copy="go install github.com/kgretzky/evilginx/v3@latest">go install github.com/kgretzky/evilginx/v3@latest</code></td>
+          <td><code class="chip chip--run" data-copy="sudo ./evilginx -p ./phishlets">sudo ./evilginx -p ./phishlets</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — hosting one = criminal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">gophish</td>
+          <td class="td-does">Provides a full phishing campaign management dashboard. You create email templates, upload employee lists, launch bulk phishing emails, and track who clicked your link, who entered credentials, and from which IP. Gives real-time statistics on how many users were compromised by your campaign.</td>
+          <td class="td-why">Sends phishing emails to real employees. Even with written scope, targets must be clearly defined.</td>
+          <td><code class="chip chip--install" data-copy="go install github.com/gophish/gophish@latest">go install github.com/gophish/gophish@latest</code></td>
+          <td><code class="chip chip--run" data-copy="./gophish">./gophish  # visit :3333 admin panel</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — needs written auth</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">modlishka</td>
+          <td class="td-does">Operates as a real-time HTTP reverse proxy that rewrites all URLs and forms on a target website to route through your server. Victims interact with the real site through your proxy — you log all keystrokes, credentials, and 2FA codes as they type them without the victim ever realising they're being intercepted.</td>
+          <td class="td-why">Real-time keylogging through a proxy. Criminal wiretapping + credential theft.</td>
+          <td><code class="chip chip--install" data-copy="go install github.com/drk1wi/Modlishka@latest">go install github.com/drk1wi/Modlishka@latest</code></td>
+          <td><code class="chip chip--run" data-copy="modlishka -phishing target.com">modlishka -phishing target.com</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — deploying = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">king-phisher</td>
+          <td class="td-does">Hosts cloned phishing pages and sends templated emails that embed invisible 1×1 pixel tracking images. When a victim opens your email, their IP, browser, and OS are logged. When they click and submit credentials, the data is stored in a local database with timestamps and geolocation data.</td>
+          <td class="td-why">Email phishing + data harvesting infrastructure. Criminal under anti-phishing statutes.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install king-phisher">sudo apt install king-phisher</code></td>
+          <td><code class="chip chip--run" data-copy="king-phisher-server -f config.yml">king-phisher-server -f config.yml</code></td>
+          <td><span class="tag tag--blocked">❌ Removed from default repos</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">SET (Social Engineer Toolkit)</td>
+          <td class="td-does">Menu-driven toolkit that automates credential harvesting attacks, spear-phishing emails, infectious media, web jacking, and QR code attacks. Can clone any website in seconds and start a listener. Also generates malicious payloads disguised as PDF files or Office documents for attachment-based attacks.</td>
+          <td class="td-why">Full attack automation across email, web, and USB vectors. Criminal offense without authorization.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install set">sudo apt install set</code></td>
+          <td><code class="chip chip--run" data-copy="sudo setoolkit">sudo setoolkit</code></td>
+          <td><span class="tag tag--warn">⚠ Kali-only — unauthorized = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">HiddenEye</td>
+          <td class="td-does">Clones popular websites (Facebook, Google, Instagram, PayPal, Netflix) into convincing phishing pages with one command. Hosts them on a local server and generates a URL via ngrok tunnel. When victims enter credentials, HiddenEye logs IP, browser info, credentials, and sends real-time notifications to the attacker.</td>
+          <td class="td-why">Automated credential theft disguised as popular services. Federal phishing crime.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/DarkSecDevelopers/HiddenEye">git clone github.com/DarkSecDevelopers/HiddenEye</code></td>
+          <td><code class="chip chip--run" data-copy="python3 HiddenEye.py">python3 HiddenEye.py</code></td>
+          <td><span class="tag tag--blocked">❌ Repo taken down — credential theft</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    Phishing is out of scope on 99% of programs. Running a campaign without <strong>written permission listing specific targets</strong> = lawsuit + criminal charges. Even an employee who clicks your link can trigger legal action against you.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">Report SPF / DMARC / DKIM misconfigurations — same security impact as showing phishing is possible, fully legal.</p>
+      <code class="chip chip--install" data-copy="dig TXT target.com | grep -i spf" style="font-size:12px;display:block;margin-bottom:6px">dig TXT target.com | grep -i spf</code>
+      <code class="chip chip--install" data-copy="nslookup -type=TXT _dmarc.target.com" style="font-size:12px;display:block">nslookup -type=TXT _dmarc.target.com</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="dos.html" class="btn btn--outline">← DOS/DDOS</a>
+    <a href="wifi.html" class="btn btn--outline">WIFI ATTACKS →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

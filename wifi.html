@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>WiFi Attack Tools — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 03</div>
+    <h1 class="page-hero__title">WiFi <span>Attack</span><br>Tools</h1>
+    <p class="page-hero__sub">Wireless password cracking and WPS exploitation tools. <strong class="text-red">Never in scope for any web bug bounty program.</strong> A completely separate and illegal domain.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">aircrack-ng</td>
+          <td class="td-does">Puts your wireless NIC into monitor mode to passively capture WPA2 handshake packets from nearby networks. When a client connects, it sniffs the 4-way handshake. Then runs an offline dictionary or brute-force attack against the captured handshake using your wordlist to recover the WiFi password in plaintext.</td>
+          <td class="td-why">Cracking WiFi passwords without authorization violates the CFAA and equivalent laws globally.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install aircrack-ng">sudo apt install aircrack-ng</code></td>
+          <td><code class="chip chip--run" data-copy="aircrack-ng -w wordlist.txt capture.cap">aircrack-ng -w wordlist.txt capture.cap</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — cracking WiFi = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">reaver</td>
+          <td class="td-does">Exploits a design flaw in the WPS (WiFi Protected Setup) protocol. WPS PINs are validated in two halves — reaver brute-forces each half independently, reducing the search space from 100 million combinations to just 11,000. Can recover a router's WPA2 password in 4–10 hours without needing to crack the password directly.</td>
+          <td class="td-why">WPS brute-force is a targeted attack on a specific device. Criminal under computer misuse laws.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install reaver">sudo apt install reaver</code></td>
+          <td><code class="chip chip--run" data-copy="reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv">reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -vv</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — WPS attacks = criminal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">wifite</td>
+          <td class="td-does">Automates the entire WiFi attack workflow — scans nearby networks, selects targets, puts NIC in monitor mode, captures WPA handshakes, deauthenticates clients to force reconnection and handshake capture, then hands off captured files to aircrack-ng or hashcat for offline cracking. Runs everything in sequence with no manual steps.</td>
+          <td class="td-why">Automated WiFi attack wrapper — fully criminal, no valid bug bounty target ever.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install wifite">sudo apt install wifite</code></td>
+          <td><code class="chip chip--run" data-copy="sudo wifite --wpa --dict wordlist.txt">sudo wifite --wpa --dict wordlist.txt</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — no BB application</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">cowpatty</td>
+          <td class="td-does">Performs offline dictionary attacks against captured WPA/WPA2-PSK handshake files. Can also use pre-computed PBKDF2 hash tables (rainbow tables) specific to a target SSID, dramatically speeding up cracking compared to real-time computation. Often used after aircrack-ng for alternative wordlist or table-based cracking.</td>
+          <td class="td-why">Offline WPA cracking against captured handshakes from others' networks. Illegal everywhere.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install cowpatty">sudo apt install cowpatty</code></td>
+          <td><code class="chip chip--run" data-copy="cowpatty -r capture.pcap -f dict.txt -s SSID">cowpatty -r capture.pcap -f dict.txt -s SSID</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — cracking = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">fern-wifi-cracker</td>
+          <td class="td-does">GUI-based front-end that wraps aircrack-ng, reaver, and other wireless tools into a point-and-click interface. Scans nearby networks, displays them visually, lets you click a network to attack it, then automatically runs the appropriate attack sequence. Designed to make WiFi hacking accessible to beginners with no CLI knowledge.</td>
+          <td class="td-why">GUI makes WiFi hacking trivially easy — same criminal liability as CLI tools.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install fern-wifi-cracker">sudo apt install fern-wifi-cracker</code></td>
+          <td><code class="chip chip--run" data-copy="sudo fern-wifi-cracker">sudo fern-wifi-cracker  # launches GUI</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — zero BB use case</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">kismet</td>
+          <td class="td-does">Passively monitors all wireless traffic in range across all channels without associating with any network. Logs every beacon frame, probe request, data packet, and hidden SSID it detects. Builds a complete map of nearby devices, their MAC addresses, signal strength, and communication patterns over time.</td>
+          <td class="td-why">Passive sniffing of traffic from networks you don't own violates wiretapping laws.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install kismet">sudo apt install kismet</code></td>
+          <td><code class="chip chip--run" data-copy="sudo kismet -c wlan0">sudo kismet -c wlan0</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — sniffing others = illegal</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    WiFi hacking requires a physical wireless NIC in monitor mode and is <strong>NEVER in scope for web bug bounty programs</strong>. No platform will pay you for cracking a WiFi password. This is a completely separate (and illegal) domain.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">WiFi is never in scope. Focus on the web application attack surface instead — subdomains, endpoints, auth flaws.</p>
+      <code class="chip chip--install" data-copy="subfinder -d target.com | httpx -silent | nuclei -t ~/nuclei-templates/" style="font-size:12px;display:block">subfinder -d target.com | httpx -silent | nuclei -t ~/nuclei-templates/</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="phishing.html" class="btn btn--outline">← PHISHING</a>
+    <a href="rats.html" class="btn btn--outline">RATS / MALWARE →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

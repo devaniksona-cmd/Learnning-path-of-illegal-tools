@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>Credential Stuffing — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 05</div>
+    <h1 class="page-hero__title">Credential<br><span>Stuffing</span> Tools</h1>
+    <p class="page-hero__sub">Account checkers and credential stuffing automation. <strong class="text-red">Illegal even with publicly leaked combo lists.</strong> Platforms detect and permanently ban within seconds.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">OpenBullet 2</td>
+          <td class="td-does">Loads a "config" file that describes exactly how to interact with a target login page — where to find the fields, how to submit, what a successful login looks like. Then fires through a combolist (username:password pairs from data breaches) at high speed with proxy rotation to evade IP blocking. Outputs a "hits" file of valid credentials with account details. Has a web UI dashboard for managing multiple campaigns simultaneously.</td>
+          <td class="td-why">Systematically accesses accounts without authorization. Criminal under CFAA — each "hit" is a separate offense.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/openbullet/openbullet2">git clone github.com/openbullet/openbullet2</code></td>
+          <td><code class="chip chip--run" data-copy="dotnet OpenBullet2.dll --urls http://localhost:5000">dotnet OpenBullet2.dll --urls http://localhost:5000</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — platforms ban instantly</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">snipr</td>
+          <td class="td-does">Specifically designed for high-speed credential stuffing with built-in config parsing for popular sites (Netflix, Spotify, gaming platforms). Uses a threadpool to make thousands of login requests per minute through rotating proxies. Displays real-time statistics: CPM (checks per minute), hits, bad credentials, and errors. Saves valid credentials with full account details extracted from the response.</td>
+          <td class="td-why">High-volume unauthorized account access. Requires stolen combo lists to function at all.</td>
+          <td><code class="chip chip--install" data-copy="# Underground forums only">Underground forums only</code></td>
+          <td><code class="chip chip--run" data-copy="snipr.exe -c config.svb -w combolist.txt">snipr.exe -c config.svb -w combolist.txt</code></td>
+          <td><span class="tag tag--blocked">❌ Taken down — requires stolen data</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">storm</td>
+          <td class="td-does">Multi-threaded credential checker with a plugin system for custom site configs. Loads combo lists and proxy lists, then fires login requests across all threads simultaneously. Supports keyword-based response parsing to automatically identify valid logins, free vs premium accounts, and extract account balance, subscription type, or stored payment methods from logged-in responses.</td>
+          <td class="td-why">Automated mass account access. Extracting account details compounds criminal liability significantly.</td>
+          <td><code class="chip chip--install" data-copy="# Underground forums only">Underground forums only</code></td>
+          <td><code class="chip chip--run" data-copy="storm.exe -config cfg.ini">storm.exe -config cfg.ini</code></td>
+          <td><span class="tag tag--blocked">❌ Removed from all public repos</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">sentryMBA</td>
+          <td class="td-does">One of the earliest credential stuffing tools, popularized on fraud forums. Uses "SBC" config files that define how to submit forms, handle CAPTCHAs, parse responses, and rotate proxies. Widely used by criminals to check combolists against banking, retail, and streaming services. Each successful check = an unauthorized login = a CFAA violation.</td>
+          <td class="td-why">Designed specifically for unauthorized mass account access. AV flags it and it's illegal in all jurisdictions.</td>
+          <td><code class="chip chip--install" data-copy="# Underground forums only">Underground forums only</code></td>
+          <td><code class="chip chip--run" data-copy="SentryMBA.exe /config:site.sbc">SentryMBA.exe /config:site.sbc</code></td>
+          <td><span class="tag tag--blocked">❌ AV flags it — illegal to possess</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">BlackBullet</td>
+          <td class="td-does">A comprehensive cracking and stuffing suite that combines credential stuffing, brute-force attacks, and combo list generation. Includes a config editor for building new site configs, proxy scraper to gather fresh proxies, and a result sorter that categorizes hits by account type. Also has modules for account balance checking and extracting stored payment method information from compromised accounts.</td>
+          <td class="td-why">All-in-one fraud tool. Payment info extraction makes it a financial crime on top of CFAA violations.</td>
+          <td><code class="chip chip--install" data-copy="# Underground forums only">Underground forums only</code></td>
+          <td><code class="chip chip--run" data-copy="BlackBullet.exe --wordlist combo.txt">BlackBullet.exe --wordlist combo.txt</code></td>
+          <td><span class="tag tag--blocked">❌ Illegal to possess in many countries</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">SNIPR v2</td>
+          <td class="td-does">Updated successor to snipr with improved CAPTCHA handling using third-party solving services (2captcha, anticaptcha). Automatically rotates proxies when rate limits are hit, switches user agents to mimic different browsers, and handles JavaScript challenges. Can process millions of credential pairs per day against a single target with enough proxy bandwidth.</td>
+          <td class="td-why">CAPTCHA bypass + proxy rotation = deliberate evasion of security measures. Compounds criminal liability.</td>
+          <td><code class="chip chip--install" data-copy="# Dark web / underground only">Dark web / underground only</code></td>
+          <td><code class="chip chip--run" data-copy="snipr2.exe --config netflix.loli --proxy proxies.txt">snipr2.exe --config netflix.loli --proxy proxies.txt</code></td>
+          <td><span class="tag tag--blocked">❌ Illegal possession + use everywhere</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    Platforms use <strong>rate limiting, CAPTCHAs, device fingerprinting, IP reputation scoring, and ML anomaly detection</strong> to detect stuffing within seconds. You will be banned, reported, and your IP handed to law enforcement before any meaningful result.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">Report missing account lockout or weak rate limiting — test manually with 5–10 wrong passwords on your own test account only.</p>
+      <code class="chip chip--install" style="font-size:12px;display:block"># Burp Intruder: 1 thread, your own test account, document lockout threshold</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="rats.html" class="btn btn--outline">← RATS / MALWARE</a>
+    <a href="c2.html" class="btn btn--outline">C2 / RANSOMWARE →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

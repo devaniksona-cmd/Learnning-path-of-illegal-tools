@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>C2 / Ransomware — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 06</div>
+    <h1 class="page-hero__title">C2 Frameworks<br><span>/ Ransomware</span></h1>
+    <p class="page-hero__sub">Command-and-control frameworks and ransomware builders. <strong class="text-red">Cracked C2 tools are backdoored — you become the victim.</strong> Possession of ransomware builders is criminal in most countries.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--danger mb-md" data-reveal>
+    <span class="alert__icon">🚨</span>
+    <strong>CRITICAL:</strong> Cracked Cobalt Strike copies circulating online are trojanized by the crackers who modified them. Running cracked C2 software means <strong>you get backdoored</strong> and become the victim of the very threat actor who cracked it.
+  </div>
+
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">Cobalt Strike (cracked)</td>
+          <td class="td-does">Legitimate Cobalt Strike provides a professional C2 platform for red teams — beacon implants, sleep/jitter to evade EDR, malleable C2 profiles to blend with normal traffic, lateral movement, credential harvesting, and team collaboration. However, cracked versions have an extra backdoor inserted by the cracker: when you run it, it silently connects to the cracker's own C2 server, giving them access to your machine and everything you compromise.</td>
+          <td class="td-why">Cracked = you become the victim. Legitimate license costs $7,000/year. Using it on targets without authorization = criminal.</td>
+          <td><code class="chip chip--install" data-copy="# Pirate sites only — DO NOT DOWNLOAD">Pirate sites only — do not download</code></td>
+          <td><code class="chip chip--run" data-copy="./teamserver IP password && cobaltstrike.bat">./teamserver IP password &amp;&amp; cobaltstrike.bat</code></td>
+          <td><span class="tag tag--blocked">❌ Cracked copies = you get backdoored</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Empire</td>
+          <td class="td-does">Post-exploitation framework that uses PowerShell (Windows) and Python (Linux/macOS) agents that run entirely in memory. Once an agent is established on a victim machine, you get a full interactive shell, credential harvesting via Mimikatz modules, lateral movement through the network, privilege escalation exploits, persistence mechanisms, and the ability to pivot through the compromised machine to reach internal network segments.</td>
+          <td class="td-why">Post-exploitation on unauthorized systems. Deploying agents without written authorization = criminal offense.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/BC-SECURITY/Empire && cd Empire && sudo ./setup/install.sh">git clone github.com/BC-SECURITY/Empire</code></td>
+          <td><code class="chip chip--run" data-copy="sudo python3 empire --rest">sudo python3 empire --rest</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — unauthorized use = criminal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Covenant</td>
+          <td class="td-does">.NET-based C2 framework with an HTTPS listener and "Grunt" implants that communicate over encrypted channels. Covenant provides task management (assign commands to implants), a credential store for harvested passwords, file upload/download to and from victims, interactive terminal sessions, and process injection to migrate between processes and evade detection. All accessible through a multi-user web UI.</td>
+          <td class="td-why">.NET C2 with encrypted implants designed to evade endpoint detection. Unauthorized use = criminal.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/cobbr/Covenant && cd Covenant/Covenant && dotnet build">git clone github.com/cobbr/Covenant</code></td>
+          <td><code class="chip chip--run" data-copy="cd Covenant/Covenant && dotnet run">cd Covenant/Covenant &amp;&amp; dotnet run</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — deploying implants = illegal</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Sliver</td>
+          <td class="td-does">Open-source Go-based C2 framework developed as a Cobalt Strike alternative. Generates implants in Go, C, or shellcode form that communicate over mTLS, WireGuard, HTTP/S, or DNS. Supports multi-operator sessions, pivot listeners, SOCKS5 proxying through victims, in-memory .NET execution, and built-in COFF (Beacon Object File) support for running Cobalt Strike post-ex modules.</td>
+          <td class="td-why">Full C2 framework with advanced evasion. Deploying implants on real systems without authorization = criminal.</td>
+          <td><code class="chip chip--install" data-copy="curl https://sliver.sh/install | sudo bash">curl https://sliver.sh/install | sudo bash</code></td>
+          <td><code class="chip chip--run" data-copy="sudo sliver-server">sudo sliver-server</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — unauthorized implants = crime</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Ransomware builder</td>
+          <td class="td-does">Generates ransomware executables with configurable settings — target file extensions to encrypt, encryption key (RSA public key generated at build time with the decryption key held by the builder), ransom note text, wallpaper change, and C2 server for key delivery. When deployed, it recursively encrypts all matching files on the victim's system and network shares, then displays the ransom demand.</td>
+          <td class="td-why">Ransomware deployment is among the most serious cybercrimes. Possession of builder tools is criminal in most countries.</td>
+          <td><code class="chip chip--install" data-copy="# Dark web only — criminal to possess">Dark web only — criminal to possess</code></td>
+          <td><code class="chip chip--run" data-copy="builder.exe --key abc123 --target C:\Users">builder.exe --key abc123 --target C:\Users</code></td>
+          <td><span class="tag tag--blocked">❌ Possession = criminal in most countries</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Wiper malware</td>
+          <td class="td-does">Overwrites the master boot record and all partition data with zeroes or random bytes, making the entire disk permanently unrecoverable. Unlike ransomware there is no decryption key — the goal is pure destruction. Used in nation-state attacks (NotPetya, Shamoon, WhisperGate). Destroys operating system, all user files, and prevents the machine from booting ever again.</td>
+          <td class="td-why">Permanent irreversible destruction. Used in state-sponsored cyberwar. Zero legitimate use case anywhere.</td>
+          <td><code class="chip chip--install" data-copy="# No public source — state-level threat actors only">No public source</code></td>
+          <td><code class="chip chip--run" data-copy="wiper.exe --drive \\.\PhysicalDrive0">wiper.exe --drive \\.\PhysicalDrive0</code></td>
+          <td><span class="tag tag--blocked">❌ Illegal globally — no legitimate use</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    Even legitimate C2 frameworks like Empire and Sliver become <strong>illegal the moment you use them on systems without written authorization</strong>. The tool is not the crime — the unauthorized access is.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">Use <strong class="text-green">interactsh</strong> for OOB callbacks — the legal way to detect RCE without deploying any implants.</p>
+      <code class="chip chip--install" data-copy="interactsh-client -v" style="font-size:12px;display:block">interactsh-client -v  # safe OOB interaction server for bug bounty</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="stuffing.html" class="btn btn--outline">← CRED STUFFING</a>
+    <a href="mitm.html" class="btn btn--outline">MITM / NETWORK →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

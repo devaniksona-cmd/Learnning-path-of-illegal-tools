@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050810">
+  <title>DoS / DDoS Tools — FORBIDDEN TOOLS</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="page-hero__grid"></div><div class="page-hero__glow"></div>
+  <div class="container container--narrow">
+    <div class="page-hero__badge">CATEGORY 01</div>
+    <h1 class="page-hero__title">DoS <span>/</span> DDoS<br>Tools</h1>
+    <p class="page-hero__sub">Tools that flood servers with traffic to cause denial of service. <strong class="text-red">Always excluded from every bug bounty scope.</strong> Criminal under CFAA and equivalent laws worldwide.</p>
+  </div>
+</div>
+
+<main class="container" style="padding-top:24px">
+  <div class="alert alert--info mb-md" data-reveal>
+    <span class="alert__icon">ℹ</span>
+    <span><span class="chip chip--install">BLUE = Install Command</span> &nbsp; <span class="chip chip--run">PURPLE = Run Command</span> &nbsp;&nbsp; Click any command to copy it to clipboard.</span>
+  </div>
+
+  <div class="tbl-wrap" data-reveal>
+    <table>
+      <thead><tr>
+        <th>TOOL</th>
+        <th class="col-does">WHAT IT DOES WHEN USED</th>
+        <th>WHY ILLEGAL</th>
+        <th class="col-install">INSTALL COMMAND</th>
+        <th class="col-run">RUN COMMAND</th>
+        <th class="col-result">OUTCOME</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-tool">LOIC</td>
+          <td class="td-does">Floods the target IP and port with tens of thousands of TCP, UDP, or HTTP packets per second from your machine. The server's CPU and network interface become saturated — legitimate users get connection refused or timeout errors. Visible immediately in server logs.</td>
+          <td class="td-why">Violates CFAA §1030 — intentional damage to protected computers. DoS is never in scope.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install loic">sudo apt install loic</code></td>
+          <td><code class="chip chip--run" data-copy="loic /target:192.168.1.1 /port:80">loic /target:192.168.1.1 /port:80</code></td>
+          <td><span class="tag tag--blocked">❌ Removed from repos</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">HOIC</td>
+          <td class="td-does">Uses booster scripts to randomize headers and URLs, amplifying attack volume 3×–1000× beyond LOIC. Sends massive HTTP floods that bypass simple IP-based blocks. Can be coordinated across multiple systems for a true distributed denial-of-service.</td>
+          <td class="td-why">Amplified DDoS — more severe criminal charge than LOIC. Causes widespread collateral damage.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/HOIC">git clone github.com/HOIC</code></td>
+          <td><code class="chip chip--run" data-copy="python hoic.py -t http://target.com">python hoic.py -t http://target.com</code></td>
+          <td><span class="tag tag--blocked">❌ GitHub took repo down</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">Slowloris</td>
+          <td class="td-does">Opens hundreds of partial HTTP connections and sends incomplete headers every few seconds, keeping each connection alive without completing it. Apache and other servers have a fixed thread pool — once all threads are occupied holding Slowloris connections, the server becomes completely unresponsive to real users.</td>
+          <td class="td-why">Crashes web servers with minimal bandwidth. Real users lose access — criminal disruption.</td>
+          <td><code class="chip chip--install" data-copy="pip3 install slowloris">pip3 install slowloris</code></td>
+          <td><code class="chip chip--run" data-copy="slowloris target.com -p 80">slowloris target.com -p 80</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — ISP/WAF blocks</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">GoldenEye</td>
+          <td class="td-does">Sends HTTP keep-alive requests with random headers, user agents, and cache-control directives to force the server to hold connections and allocate memory per request. Bypasses basic WAF rules by appearing as legitimate browsing traffic until connection count saturates the server.</td>
+          <td class="td-why">Designed to evade WAFs while still causing complete denial of service. Criminal offense.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/jseidl/GoldenEye">git clone github.com/jseidl/GoldenEye</code></td>
+          <td><code class="chip chip--run" data-copy="python goldeneye.py http://target.com">python goldeneye.py http://target.com</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — WAF blocks</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">torshammer</td>
+          <td class="td-does">Routes a Slowloris-style attack through the Tor network, masking your real IP address. Each Tor exit node sends partial HTTP connections to the target. Harder to block because attack traffic appears to come from many different IP ranges around the world.</td>
+          <td class="td-why">Tor does not provide legal protection — attack origin is still traceable. Criminal offense.</td>
+          <td><code class="chip chip--install" data-copy="git clone github.com/dotfighter/torshammer">git clone github.com/dotfighter/torshammer</code></td>
+          <td><code class="chip chip--run" data-copy="python torshammer.py -t target.com -p 80">python torshammer.py -t target.com -p 80</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — still traceable</span></td>
+        </tr>
+        <tr>
+          <td class="td-tool">hping3</td>
+          <td class="td-does">Crafts raw TCP/UDP/ICMP packets at maximum NIC speed using the --flood flag. Can forge source IP addresses (spoofing), target specific ports, and saturate the victim's uplink bandwidth completely. Used to test firewall rules, but here abused to overwhelm network stacks and crash routers.</td>
+          <td class="td-why">Sends crafted packets at line speed — network device crashes. Severe CFAA violation.</td>
+          <td><code class="chip chip--install" data-copy="sudo apt install hping3">sudo apt install hping3</code></td>
+          <td><code class="chip chip--run" data-copy="hping3 -S --flood -V -p 80 target.com">hping3 -S --flood -V -p 80 target.com</code></td>
+          <td><span class="tag tag--warn">⚠ Installs — ISP detects flood</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert--warn" data-reveal>
+    <span class="alert__icon">⚠</span>
+    DoS/DDoS is <strong>ALWAYS excluded from bug bounty scope</strong>. Running any of these tools triggers ISP blocks, IP bans, and criminal charges. Even brief use on a target is enough for law enforcement to subpoena your ISP.
+  </div>
+
+  <div class="mt-lg" data-reveal>
+    <h3 class="text-green" style="font-family:var(--display);letter-spacing:2px;margin-bottom:12px">✅ LEGAL ALTERNATIVE</h3>
+    <div class="card card--green">
+      <p style="margin-bottom:10px;font-size:13px;color:var(--dim)">Report rate limiting or missing throttling controls via Burp Suite Intruder — same finding, fully legal.</p>
+      <code class="chip chip--install" data-copy="burpsuite" style="font-size:12px">burpsuite  # Intruder tab → 1 thread, throttled</code>
+    </div>
+  </div>
+
+  <div class="page-nav" data-reveal>
+    <a href="index.html" class="btn btn--outline">← HOME</a>
+    <a href="phishing.html" class="btn btn--outline">PHISHING →</a>
+  </div>
+  <div style="height:60px"></div>
+</main>
+
+<div id="footer-placeholder"></div>
+<script src="js/components.js"></script>
+</body></html>
